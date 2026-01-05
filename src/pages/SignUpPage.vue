@@ -5,7 +5,6 @@ import { RouterLink } from 'vue-router'
 import PicturePasswordGrid from '../components/PicturePasswordGrid.vue'
 
 const username = ref('')
-const fullName = ref('')
 
 const minPictures = 3
 const maxPictures = 6
@@ -17,7 +16,6 @@ const errorMessage = ref('')
 const canSubmit = computed(() => {
     return (
         Boolean(username.value.trim()) &&
-        Boolean(fullName.value.trim()) &&
         chosenPictures.value.length >= minPictures &&
         chosenPictures.value.length <= maxPictures
     )
@@ -38,7 +36,6 @@ function submit() {
 
 function resetForm() {
     username.value = ''
-    fullName.value = ''
     chosenPictures.value = []
     submitted.value = false
     errorMessage.value = ''
@@ -65,12 +62,6 @@ function resetForm() {
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Username</span>
                         <input v-model="username" type="text" autocomplete="off"
-                            class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base outline-none ring-sky-200 focus:ring-4" />
-                    </label>
-
-                    <label class="block">
-                        <span class="text-sm font-medium text-slate-700">Name</span>
-                        <input v-model="fullName" type="text" autocomplete="name"
                             class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base outline-none ring-sky-200 focus:ring-4" />
                     </label>
 

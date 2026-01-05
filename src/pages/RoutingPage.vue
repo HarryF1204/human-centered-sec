@@ -43,6 +43,12 @@ import { RouterLink } from 'vue-router'
                         to="/student/first-login">
                         First-time login
                     </RouterLink>
+
+                    <RouterLink
+                        class="block rounded-xl border border-slate-200 bg-white px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-sky-100"
+                        to="/privacy">
+                        Privacy commitment (parents)
+                    </RouterLink>
                 </div>
             </section>
         </div>

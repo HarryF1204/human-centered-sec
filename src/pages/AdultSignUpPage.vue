@@ -1,29 +1,24 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import PasswordField from '../components/PasswordField.vue'
 
-const fullName = ref('')
 const email = ref('')
 const password = ref('')
 
 const submitted = ref(false)
 const errors = ref({
-    fullName: '',
     email: '',
     password: '',
-    confirmPassword: '',
 })
 
 function submit() {
     submitted.value = false
-    errors.value = { fullName: '', email: '', password: '', confirmPassword: '' }
+    errors.value = { email: '', password: '' }
 
-    const noName = !fullName.value.trim()
     const noEmail = !email.value.trim()
     const noPassword = !password.value
 
-    if (noName) errors.value.fullName = 'Enter your full name.'
     if (noEmail) errors.value.email = 'Enter your email.'
     if (noPassword) errors.value.password = 'Enter your password.'
     if (noEmail || noPassword) return
@@ -64,14 +59,6 @@ function submit() {
 
             <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <form class="space-y-5" @submit.prevent="submit">
-                    <label class="block">
-                        <span class="text-sm font-medium text-slate-700">Full name</span>
-                        <input v-model="fullName" type="text" autocomplete="name" placeholder="John Smith"
-                            class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base outline-none ring-sky-200 focus:ring-4"
-                            :aria-invalid="Boolean(errors.fullName)" />
-                        <p v-if="errors.fullName" class="mt-2 text-sm text-rose-700">* {{ errors.fullName }}</p>
-                    </label>
-
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Email</span>
                         <input v-model="email" type="email" autocomplete="email" inputmode="email"
